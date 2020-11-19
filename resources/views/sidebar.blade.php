@@ -3,7 +3,7 @@
 
 <nav class="nav-menu">
   <ul>
-    <li class="active"><a  data-toggle="modal" data-target="#adduserModal"><i class="bx bx-user"></i> <span>About</span></a></li>
+    <li class="active"><a  data-toggle="modal" data-target="#adduserModal"><i class="bx bx-user"></i> <span>Add user</span></a></li>
   </ul>
 </nav><!-- .nav-menu -->
 
