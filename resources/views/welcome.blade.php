@@ -31,7 +31,6 @@
                         <th scope="col">Image</th>
                         <th scope="col">Password</th>
                         <th scope="col">Update</th>
-                        <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +45,7 @@
 
                         </td>
                         <td>{{$d->password}}</td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal{{$d->id}}">Update User</button></td>
                     </tr>
                     @endforeach
 
@@ -119,6 +119,51 @@
             </div>
         </div>
     </div>
+
+    @foreach($data as $d)
+    <!-- Modal -->
+    <div class="modal fade" id="adduserModal{{$d->id}}" tabindex="-1" role="dialog" aria-labelledby="adduserModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adduserModalLabel">Add User {{ $d->name }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('formEdit',['id'->$d->id]) }}" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $d->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{ $d->email }}" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Phone</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="phone" value="{{ $d->phoneNo }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Password</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="password" value="{{ $d->password }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="file" class="form-control" id="exampleInputEmail1" name="image">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endforeach
 
 
     @if($errors->any())

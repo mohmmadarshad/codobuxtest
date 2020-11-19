@@ -25,3 +25,4 @@ Route::get('/', function () {
 // Route::match(['get', 'post'], '/form-submit', )->name('formSubmit');
 
 Route::match(['get', 'post'], 'form-submit', [codobux::class, 'formsubmit'])->name('formSubmit');
+Route::match(['get', 'post'], 'form-edit', [codobux::class, 'formEdit'])->name('formEdit');
