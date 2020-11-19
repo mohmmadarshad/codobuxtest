@@ -131,7 +131,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="{{ route('formEdit',['id'->$d->id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('formEdit',['id'=>$d->id]) }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group">
